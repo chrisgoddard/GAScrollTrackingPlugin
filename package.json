@@ -1,0 +1,25 @@
+{
+  "name": "ga-scroll-tracking-plugin",
+  "version": "1.0.0",
+  "description": "A lightweight Google Analytics scroll tracking plugin utilizing the GA plugin API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serpsapp/GAScrollTrackingPlugin.git"
+  },
+  "author": "@serpsapp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/serpsapp/GAScrollTrackingPlugin/issues"
+  },
+  "homepage": "https://github.com/serpsapp/GAScrollTrackingPlugin#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "mocha": "^2.4.5",
+    "mocha-jsdom": "^1.1.0"
+  }
+}
