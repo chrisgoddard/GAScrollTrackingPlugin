@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+  body {
+    marign: 0 !important;
+  }
+  iframe {
+    border: none !important;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+</head>
+<body>
+
+  <script>
+    var messages
+    window.addEventListener('message', function(event) {
+      var data = JSON.parse(event.data)
+      messages = data.sessionDurationMessage
+    });
+
+  </script>
+
+  <iframe src="/scroll-depth-tracker-frame.html"></iframe>
+
+</body>
+</html>
