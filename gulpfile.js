@@ -62,9 +62,9 @@ gulp.task('build', function(done){
 
   .pipe(source('./scroll-depth-tracker.js'))
   .pipe(buffer())
-  .pipe(sourcemaps.init({loadMaps: true}))
+  //.pipe(sourcemaps.init({loadMaps: true}))
   .pipe(uglify({output: {preamble: license + '\n\n' + version}}))
-  .pipe(sourcemaps.write('./'))
+  //.pipe(sourcemaps.write('./'))
   .pipe(gulp.dest('./'));
 
 })
