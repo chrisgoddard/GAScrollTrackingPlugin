@@ -27,6 +27,7 @@ var eslint = require('gulp-eslint')
 var fs = require('fs')
 var gulp = require('gulp')
 var gutil = require('gulp-util')
+var gulpif = require('gulp-if')
 var ngrok = require('ngrok')
 var pkg = require('./package.json')
 var source = require('vinyl-source-stream')
@@ -62,9 +63,9 @@ gulp.task('build', function(done){
 
   .pipe(source('./scroll-depth-tracker.js'))
   .pipe(buffer())
-  .pipe(sourcemaps.init({loadMaps: true}))
+  //.pipe(sourcemaps.init({loadMaps: true}))
   .pipe(uglify({output: {preamble: license + '\n\n' + version}}))
-  .pipe(sourcemaps.write('./'))
+  //.pipe(sourcemaps.write('./'))
   .pipe(gulp.dest('./'));
 
 })
@@ -76,7 +77,6 @@ var webdriver = require('gulp-webdriver')
 var browserSyncServer, seleniumServer
 
 gulp.task('serve',['build'], function(done){
-
       browserSyncServer = browserSync({
         open: false,
         port: 9000,
@@ -88,6 +88,29 @@ gulp.task('serve',['build'], function(done){
         },
         ui: false
       }, done)
+
+})
+
+
+gulp.task('js-watch', ['build'], browserSync.reload)
+
+gulp.task('watch', ['build'], function(){
+
+  browserSyncServer = browserSync({
+        open: true,
+        port: 9000,
+        files: ['./test/*.html'],
+        server: {
+          baseDir: ['test', './'],
+          routes : {
+            '/scripts' : './'
+          }
+        },
+        ui: false
+      })
+
+
+  gulp.watch(['./lib/*.js', './test/*.js', './test/specs/*.js'], ['js-watch'])
 
 })
 
